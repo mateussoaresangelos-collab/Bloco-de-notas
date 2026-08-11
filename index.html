@@ -1,0 +1,111 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Bloco de Notas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Lista de notas">
+        <div class="sidebar-top">
+          <div class="brand">
+            <span class="brand-icon" aria-hidden="true">🗒️</span>
+            <div>
+              <h1>Notas</h1>
+              <p>Bloco de Notas</p>
+            </div>
+          </div>
+          <button
+            class="button button-primary"
+            id="new-note-button"
+            type="button"
+          >
+            + Nova nota
+          </button>
+        </div>
+
+        <div class="search-wrapper">
+          <label class="visually-hidden" for="search-input">Buscar notas</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Buscar notas..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="notes-list" id="notes-list" aria-live="polite"></div>
+
+        <div class="sidebar-footer">
+          <button
+            class="button button-ghost"
+            id="toggle-theme-button"
+            type="button"
+          >
+            🌙 Dark
+          </button>
+        </div>
+      </aside>
+
+      <main class="editor-shell" aria-label="Editor de nota">
+        <div class="editor-toolbar">
+          <div>
+            <h2 id="editor-title">Selecione ou crie uma nota</h2>
+            <p class="editor-meta" id="editor-meta"></p>
+          </div>
+          <div class="editor-actions">
+            <button
+              class="button button-secondary"
+              id="pin-button"
+              type="button"
+              disabled
+            >
+              📌 Fixar
+            </button>
+            <button
+              class="button button-danger"
+              id="delete-button"
+              type="button"
+              disabled
+            >
+              🗑️ Apagar
+            </button>
+          </div>
+        </div>
+
+        <div class="editor-panel">
+          <label class="visually-hidden" for="note-title">Título da nota</label>
+          <input
+            class="note-title"
+            id="note-title"
+            placeholder="Título da nota"
+            disabled
+          />
+
+          <p class="toolbar-hint">
+            Use <strong>#</strong> para título, <strong>-</strong> para lista,
+            <strong>[ ]</strong> para checklist.
+          </p>
+
+          <div
+            class="blocks"
+            id="blocks-container"
+            aria-label="Blocos de conteúdo da nota"
+          ></div>
+        </div>
+
+        <div class="editor-footer">
+          <span class="char-counter" id="char-counter">0 caracteres</span>
+          <span class="footer-note"
+            >Salvando automaticamente no navegador.</span
+          >
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

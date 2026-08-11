@@ -1,0 +1,442 @@
+﻿/* ============================================================
+   Bloco de Notas — estilos
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0c0d10;
+  --panel: #14161b;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --text: #e7e8ec;
+  --muted: #8e909c;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #d9a15b;
+  --accent-strong: #e8bd85;
+  --danger: #e2687a;
+
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --ease: 0.16s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------
+   Layout geral
+   ------------------------------------------------------------ */
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: 1rem;
+  padding: 1.25rem;
+  min-height: 100vh;
+}
+
+.sidebar,
+.editor-shell {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+/* ------------------------------------------------------------
+   Sidebar
+   ------------------------------------------------------------ */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  font-size: 1.3rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+.brand p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.search-wrapper input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  outline: none;
+  transition: border-color var(--ease), background-color var(--ease);
+}
+
+.search-wrapper input:focus {
+  border-color: var(--accent);
+  background: var(--surface-strong);
+}
+
+.notes-list {
+  display: grid;
+  gap: 0.6rem;
+  overflow-y: auto;
+  padding-right: 0.15rem;
+}
+
+.notes-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notes-list::-webkit-scrollbar-thumb {
+  background: var(--surface-strong);
+  border-radius: 999px;
+}
+
+.note-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: var(--surface);
+  text-align: left;
+  transition: border-color var(--ease), background-color var(--ease);
+}
+
+.note-card:hover {
+  background: var(--surface-strong);
+}
+
+.note-card.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.note-card h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.note-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.note-card .note-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.notes-section {
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.4rem 0;
+}
+
+.note-empty {
+  color: var(--muted);
+  padding: 1rem;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+/* ------------------------------------------------------------
+   Editor
+   ------------------------------------------------------------ */
+
+.editor-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.editor-toolbar h2 {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+}
+
+.editor-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.editor-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.note-title {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  outline: none;
+}
+
+.note-title:disabled {
+  opacity: 0.7;
+}
+
+.toolbar-hint {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+  padding: 0 0.2rem;
+}
+
+/* ------------------------------------------------------------
+   Blocos
+   ------------------------------------------------------------ */
+
+.blocks {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.block {
+  position: relative;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid transparent;
+  transition: background-color var(--ease);
+}
+
+.block:hover {
+  background: var(--surface-strong);
+}
+
+.block-heading .editable {
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.block.list-item,
+.block.list-number {
+  padding-left: 1.9rem;
+}
+
+.block.list-item::before,
+.block.list-number::before {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-strong);
+}
+
+.block.list-item::before {
+  content: '•';
+  font-size: 1.1rem;
+}
+
+.block.list-number::before {
+  content: attr(data-order) '.';
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.block.checklist {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.8rem;
+  padding-left: 0.85rem;
+}
+
+.block.checklist input[type='checkbox'] {
+  margin: 0.35rem 0 0;
+  accent-color: var(--accent);
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.editable {
+  min-height: 1.5rem;
+  outline: none;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.block.checklist .editable {
+  min-height: 1.6rem;
+}
+
+.editor-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------
+   Botões
+   ------------------------------------------------------------ */
+
+.button {
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  transition: filter var(--ease), background-color var(--ease), color var(--ease);
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #1a1206;
+  font-weight: 600;
+}
+
+.button-secondary {
+  background: var(--surface-strong);
+  color: var(--text);
+}
+
+.button-danger {
+  background: color-mix(in srgb, var(--danger) 18%, transparent);
+  color: #d42e47;
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ------------------------------------------------------------
+   Responsivo
+   ------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .sidebar,
+  .editor-shell {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar,
+  .editor-shell {
+    padding: 1rem;
+  }
+
+  .editor-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .editor-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* ------------------------------------------------------------
+   Tema claro
+   ------------------------------------------------------------ */
+
+body.light {
+  color-scheme: light;
+  --bg: #f6f4ef;
+  --panel: #ffffff;
+  --surface: rgba(15, 23, 42, 0.035);
+  --surface-strong: rgba(15, 23, 42, 0.065);
+  --text: #17181c;
+  --muted: #6b6d78;
+  --border: rgba(15, 23, 42, 0.1);
+  --accent: #b5793a;
+  --accent-strong: #8f5c26;
+  --danger: #d94a63;
+  --shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+}
+
+body.light .button-primary {
+  color: #fff8ee;
+}
