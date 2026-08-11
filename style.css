@@ -377,7 +377,7 @@ button {
 
 .button-danger {
   background: color-mix(in srgb, var(--danger) 18%, transparent);
-  color: #d42e47;
+  color: #e4324d;
 }
 
 .button-ghost {
